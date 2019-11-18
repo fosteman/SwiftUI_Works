@@ -1,8 +1,7 @@
 
 import SwiftUI
-import Game
 
-struct ContentView: View {
+public struct ContentView: View {
   @ObservedObject private var game = BullsEyeGame()
 
   @State private var currentValue = 50.0
@@ -11,23 +10,15 @@ struct ContentView: View {
   private var alpha: Double {
     abs(Double(game.targetValue) - currentValue) / 100.0
   }
-    
-    @EnvironmentObject var defaults: UserDefaults
-    
-    
 
-  var body: some View {
+  public var body: some View {
     VStack {
       Text("Put the Bull's Eye as close as you can to: \(game.targetValue)")
       HStack {
         Text("0")
-        if (defaults.bool(forKey: "show_hint"))  {
-            Slider(value: $currentValue, in: 1.0...100.0, step: 1.0)
-              .background(Color.blue)
-                .opacity(alpha)
-        } else {
-            Slider(value: $currentValue, in: 1.0...100.0, step: 1.0)
-        }
+        Slider(value: $currentValue, in: 1.0...100.0, step: 1.0)
+          .background(Color.blue)
+          .opacity(alpha)
         Text("100")
       }
       .padding(.horizontal)
@@ -50,6 +41,7 @@ struct ContentView: View {
       }
     }
   }
+    public init() {}
 }
 
 struct ContentView_Previews : PreviewProvider {
