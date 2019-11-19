@@ -9,14 +9,14 @@ struct RegisterView: View {
     
     
     var body: some View {
-        ZStack {
-            WelcomeBackgroundImage()
             VStack(content: {
                 WelcomeMessageView()
                 TextField("How would I call you ?", text: $name)
+                    .bordered()
+            
             })
-        }
-    
+        .padding()
+        .background(WelcomeBackgroundImage())
     }
 }
 
