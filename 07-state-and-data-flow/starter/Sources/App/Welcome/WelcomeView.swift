@@ -70,6 +70,7 @@ struct WelcomeView_Previews: PreviewProvider {
 
   static var previews: some View {
     WelcomeView(name: "Ray")
+    .environmentObject(User())
   }
 }
 #endif

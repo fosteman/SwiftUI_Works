@@ -35,7 +35,7 @@ import Learning
 /// Displays the practice view with question and potential answers (choices).
 struct PracticeView {
   
-  @EnvironmentObject private var practiceStore: PracticeStore
+  private var practiceStore: PracticeStore
   
   /// Determines when the practice session has been completed.
   /// Compares the session score with the number of assessments generated.
@@ -44,7 +44,8 @@ struct PracticeView {
   /// Initializes a new `PracticeView` and generates a `PracticeStore`
   /// instance for the practice session state management.
   init() {
-  }
+    practiceStore = PracticeStore()
+    }
   
 }
 

@@ -30,7 +30,10 @@ import SwiftUI
 
 struct RegisterView {
   
-  @State var name: String = ""
+    @EnvironmentObject var user: User
+    
+    
+    @State var name: String = ""
     
   @State var isRegistered: Bool = false
   

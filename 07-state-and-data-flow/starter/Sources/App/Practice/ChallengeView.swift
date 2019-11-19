@@ -39,7 +39,7 @@ struct ChallengeView {
   
   /// Our view-backing state model for managing the practice assessment
   /// sessions for the user.
-  @EnvironmentObject private var practiceStore: PracticeStore
+  @ObservedObject private var practiceStore: PracticeStore
   
   // TODO: Manage these conditions in the `PracticeStore` to reduce
   // dependency on `@State` values.
@@ -63,8 +63,9 @@ struct ChallengeView {
   // MARK: - Initializers
   
   /// Initialize a new `ChallengeView`.
-  init(onComplete: @escaping () -> Void) {
-    self.onComplete = onComplete
+    init(onComplete: @escaping () -> Void, practice: PracticeStore) {
+        self.onComplete = onComplete
+        self.practiceStore = practice
   }
   
   // MARK: - Private Methods
@@ -125,6 +126,7 @@ extension ChallengeView: View {
     VStack {
       QuestionView(question: wordAssessment?.card.word.original ?? "")
         .frame(height: 300)
+        ScoreView(answered: <#T##Binding<Int>#>, of: <#T##Int#>)
       ScoreView(answered: $score, of: self.practiceStore.assessments.count)
       Divider()
       ChoicesView(

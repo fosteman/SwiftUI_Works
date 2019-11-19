@@ -32,11 +32,12 @@ import SwiftUI
 struct ScoreView {
   
   @Binding private var answered: Int
-  
   private let questions: Int
   
   init(answered: Binding<Int>, of questions: Int) {
     self._answered = answered
+    // answered - wrapper
+    // _answered - value
     self.questions = questions
   }
 }
