@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:../../Downloads/SwiftUI_by_Tutorials_v1.1.0/05-frameworks/starter/BullsEyePlus/Game">
-   </FileRef>
-   <FileRef
-      location = "group:rgbullseye/rgbullseye.xcodeproj">
+      location = "group:">
    </FileRef>
 </Workspace>
