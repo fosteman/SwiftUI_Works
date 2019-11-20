@@ -14,8 +14,18 @@ struct RegisterView: View {
     var body: some View {
             VStack(content: {
                 WelcomeMessageView()
+                HStack {
                 TextField("How would I call you ?", text: $user.profile.name)
                     .bordered()
+                    Spacer()
+                    Text("\(user.profile.name.count)")
+                        .font(.caption)
+                        .foregroundColor(
+                            user.isUserNameValid() ? .green : .red)
+                        .padding(.trailing)
+            
+                .padding(.bottom)
+                }
                 Button(action: self.registerUser) {
                     HStack {
                         Image(systemName: "checkmark")
@@ -26,6 +36,7 @@ struct RegisterView: View {
                         .bold()
                     }
                 }
+                .disabled(!user.isUserNameValid())
             .bordered()
                 }
             )
