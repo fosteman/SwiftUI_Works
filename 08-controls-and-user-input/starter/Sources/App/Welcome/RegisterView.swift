@@ -19,8 +19,7 @@ struct RegisterView: View {
             })
         .background(WelcomeBackgroundImage())
                 .padding(.bottom, keyboardHandler.keyboardHeight)
-                .onAppear {self.keyboardHandler}
-        .onDisappear {self.keyboardHandler.$isVisible.unsubscribe()}
+    
     }
     
 }
