@@ -17,14 +17,22 @@ struct RegisterView: View {
                 HStack {
                 TextField("How would I call you ?", text: $user.profile.name)
                     .bordered()
+                    
                     Spacer()
                     Text("\(user.profile.name.count)")
                         .font(.caption)
                         .foregroundColor(
-                            user.isUserNameValid() ? .green : .red)
-                        .padding(.trailing)
-            
+ user.isUserNameValid() ? .green : .red)
+ .padding(.trailing)
                 .padding(.bottom)
+                
+                Toggle(isOn: $user.settings.rememberUser)
+                {
+                    Text("Remember my name")
+                        .font(.subheadline)
+                        .multilineTextAlignment(.trailing)
+                        .foregroundColor(.gray)
+                }
                 }
                 Button(action: self.registerUser) {
                     HStack {
@@ -56,6 +64,15 @@ static let user = UserManager(name: "Tim")
 
 extension RegisterView {
     func registerUser() -> Void {
+        if user.settings.rememberUser {
+            
+        
         user.persistProfile()
+        }
+        
+        else {
+            user.clear()
+        }
+        user.persistSettings()
     }
 }
